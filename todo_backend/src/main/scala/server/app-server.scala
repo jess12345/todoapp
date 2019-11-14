@@ -16,16 +16,13 @@ object AppServer {
   def stream[F[_]: ConcurrentEffect](implicit T: Timer[F], C: ContextShift[F]): Stream[F, Nothing] = {
     for {
       client <- BlazeClientBuilder[F](global).stream
-      jokeAlg = ToDoTasks.impl[F](client)
-      tAlg = Task.impl[F]
 
       // Combine Service Routes into an HttpApp.
       // Can also be done via a Router if you
       // want to extract a segments not checked
       // in the underlying routes.
       httpApp = (
-        AppRoutes.ToDoTaskRoutes[F](jokeAlg) <+>
-        AppRoutes.TaskRoutes[F](tAlg)
+        AppRoutes.TaskRoutes[F]( Task.impl[F])
       ).orNotFound
 
       // With Middlewares in place
