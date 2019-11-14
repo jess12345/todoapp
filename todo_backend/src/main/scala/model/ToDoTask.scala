@@ -1,11 +1,12 @@
-case class ToDoTask(
-    Id: Int,
-    Description: String,
-    Status: ToDoTaskStatus
-)
+//package model
 
-class ToDoTaskStatus extends Enumeration {
-    type Type = Value
-    val Complete, Done = Value
-}
-  
+//case class ToDoTask(
+//    Id: Int,
+//    Description: String,
+//    Status: ToDoTaskStatus.Value
+//)
+//
+//object ToDoTaskStatus extends Enumeration {
+//    val Todo, Done = Value
+//}
+//

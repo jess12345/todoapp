@@ -7,7 +7,7 @@ import org.http4s.client.blaze.BlazeClientBuilder
 import org.http4s.implicits._
 import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.server.middleware.Logger
-import server.services.ToDoTasks
+import server.services._
 
 import scala.concurrent.ExecutionContext.global
 
@@ -17,13 +17,15 @@ object AppServer {
     for {
       client <- BlazeClientBuilder[F](global).stream
       jokeAlg = ToDoTasks.impl[F](client)
+      tAlg = Task.impl[F]
 
       // Combine Service Routes into an HttpApp.
       // Can also be done via a Router if you
       // want to extract a segments not checked
       // in the underlying routes.
       httpApp = (
-        AppRoutes.jokeRoutes[F](jokeAlg)
+        AppRoutes.ToDoTaskRoutes[F](jokeAlg) <+>
+        AppRoutes.TaskRoutes[F](tAlg)
       ).orNotFound
 
       // With Middlewares in place

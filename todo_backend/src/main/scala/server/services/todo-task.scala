@@ -14,30 +14,33 @@ import org.http4s.Method._
 import org.http4s.circe._
 
 trait ToDoTasks[F[_]]{
-  def get: F[ToDoTasks.ToDoTask]
+  def get: F[ToDoTasks.Joke]
 }
 
 object ToDoTasks {
   def apply[F[_]](implicit ev: ToDoTasks[F]): ToDoTasks[F] = ev
 
-  final case class ToDoTask(joke: String) extends AnyVal
-  object ToDoTask {
-    implicit val jokeDecoder: Decoder[ToDoTask] = deriveDecoder[ToDoTask]
-    implicit def jokeEntityDecoder[F[_]: Sync]: EntityDecoder[F, ToDoTask] =
+  final case class Joke(joke: String) extends AnyVal
+
+  object Joke {
+    implicit val jokeDecoder: Decoder[Joke] = deriveDecoder[Joke]
+    implicit def jokeEntityDecoder[F[_]: Sync]: EntityDecoder[F, Joke] =
       jsonOf
-    implicit val jokeEncoder: Encoder[ToDoTask] = deriveEncoder[ToDoTask]
-    implicit def jokeEntityEncoder[F[_]: Applicative]: EntityEncoder[F, ToDoTask] =
+    implicit val jokeEncoder: Encoder[Joke] = deriveEncoder[Joke]
+    implicit def jokeEntityEncoder[F[_]: Applicative]: EntityEncoder[F, Joke] =
       jsonEncoderOf
   }
 
-  final case class JokeError(e: Throwable) extends RuntimeException
+  final case class ToDoTaskError(e: Throwable) extends RuntimeException
+
+
 
   def impl[F[_]: Sync](C: Client[F]): ToDoTasks[F] = new ToDoTasks[F]{
     val dsl = new Http4sClientDsl[F]{}
     import dsl._
-    def get: F[ToDoTasks.ToDoTask] = {
-      C.expect[ToDoTask](GET(uri"https://icanhazdadjoke.com/"))
-        .adaptError{ case t => JokeError(t)} // Prevent Client Json Decoding Failure Leaking
+    def get: F[ToDoTasks.Joke] = {
+      C.expect[Joke](GET(uri"https://icanhazdadjoke.com/"))
+        .adaptError{ case t => ToDoTaskError(t)} // Prevent Client Json Decoding Failure Leaking
     }
   }
 }

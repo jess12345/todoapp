@@ -62,11 +62,21 @@ CREATE TABLE tasks (
   status          VARCHAR(32) NOT NULL
 );
 ```
-
+## Connecting to the Database
+Tutorial: `https://tpolecat.github.io/doobie/docs/03-Connecting.html`
 
 
 # Http4s
 [Tutorial](https://medium.com/@alandevlin7/http4s-v0-2-1d2d859d86c4)
 1. `sbt run`
-2. `$ curl -i http://localhost:8080/hello/world`
-3. 
+2. `curl -i http://localhost:9999/task`
+3. ``
+
+
+## Kill all processes on port
+```
+netstat -vanp tcp | grep 9999
+lsof -i :9999
+kill -15 <PID>
+kill -9 <PID>
+```
