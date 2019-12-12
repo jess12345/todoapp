@@ -2,12 +2,15 @@
 
 ## Run
 1. `cd todo_frontend`
-2. `npm start`
+2. `yarn start`
 
-## New react app
-```
-npx create-react-app my-app
-```
+## Set up
+- Create react app `yarn create react-app todo_frontend --typescript`
+  - https://medium.com/@rossbulat/how-to-use-typescript-with-react-and-redux-a118b1e02b76
+- Add bootstrap `npm install react-bootstrap bootstrap`
+  - https://react-bootstrap.github.io/getting-started/introduction/
+
+
 
 # Backend - Scala
 
