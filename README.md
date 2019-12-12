@@ -13,6 +13,7 @@
 - Add react router bootstrap `npm install react-router-bootstrap --save` `npm install @types/react-router-bootstrap`
 - Add redux `npm install redux --save`
   - https://redux.js.org/basics/basic-tutorial
+- Add react-redux `npm install react-redux --save`
 
 # Backend - Scala
 
