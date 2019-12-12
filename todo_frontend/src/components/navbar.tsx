@@ -8,7 +8,7 @@ const AppNavbar = () => {
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="/">
         <img src={logo} className="App-logo" height="30px" alt="logo"/>
-        My ToDo App
+        ToDo
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       {/* <Navbar.Collapse id="basic-navbar-nav">

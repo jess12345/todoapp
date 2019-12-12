@@ -1,6 +1,7 @@
 import React from 'react'
 import { Task, TaskProgress } from '../models/task'
 import AppTaskList from '../components/taskList'
+import AppAddTask from '../components/addTask'
 
 const todoTasks = [
   new Task(1, "Task 1"),
@@ -25,7 +26,8 @@ const doneTasks = [
 const TaskPage = () => {
   return (
     <div>
-      <h1>To Do List</h1>
+      <h1>My Todo List</h1>
+      <AppAddTask />
       <AppTaskList taskList={todoTasks} />
     </div>
   )
