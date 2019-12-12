@@ -1,15 +1,15 @@
 import React from 'react'
-import { Task } from '../models/task'
+import { Task, TaskProgress } from '../models/task'
 import AppTaskList from '../components/taskList'
 
 const todoTasks = [
   new Task(1, "Task 1"),
   new Task(2, "Task 2"),
-  new Task(3, "Task 3"),
+  new Task(3, "Task 3", TaskProgress.DONE),
   new Task(4, "Task 4"),
-  new Task(5, "Task 5"),
+  new Task(5, "Task 5", TaskProgress.DONE),
   new Task(6, "Task 6"),
-  new Task(7, "Task 7"),
+  new Task(7, "Task 7", TaskProgress.DONE),
 ]
 
 const doneTasks = [
@@ -25,13 +25,16 @@ const doneTasks = [
 const TaskPage = () => {
   return (
     <div>
-      To Do:
+      <h1>To Do List</h1>
       <AppTaskList taskList={todoTasks} />
-      <br/>
-      Done:
-      <AppTaskList taskList={doneTasks} />
     </div>
   )
 }
+
+// const mapStateToProps = (state: ) => {
+//   return {
+
+//   }
+// }
 
 export default TaskPage

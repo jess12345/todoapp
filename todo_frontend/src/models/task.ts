@@ -1,11 +1,18 @@
 export class Task {
-  id?: number
-  task?: string
+  id: number
+  task: string
+  progress: TaskProgress
 
-  constructor(id?: number, task?: string){
+  constructor(id: number, task: string, progress = TaskProgress.TODO){
     this.id = id
     this.task = task
+    this.progress = progress
   }
+}
+
+export enum TaskProgress {
+  TODO,
+  DONE
 }
 
 export enum TaskActions {
