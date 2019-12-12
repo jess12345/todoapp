@@ -6,7 +6,7 @@ const AppTaskList = ({ taskList } : {taskList : Task[]}) => {
     <ul>
       {
         taskList.map( t => (
-          <AppTask task={t} />
+          <AppTask key={t.id} task={t} />
         ))
       }
     </ul>

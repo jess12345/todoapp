@@ -11,6 +11,8 @@
   - https://react-bootstrap.github.io/getting-started/introduction/
 - Add react router `npm install react-router-dom --save` `npm install @types/react-router-dom`
 - Add react router bootstrap `npm install react-router-bootstrap --save` `npm install @types/react-router-bootstrap`
+- Add redux `npm install redux --save`
+  - https://redux.js.org/basics/basic-tutorial
 
 # Backend - Scala
 

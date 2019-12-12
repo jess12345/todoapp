@@ -1,16 +1,16 @@
 import React from 'react'
 import './App.css'
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import AppNavbar from './components/navbar'
 import AppRouter from './routes/router'
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <React.Fragment>
       <AppHeader />
       <br/>
       <AppBody />
-    </div>
+    </React.Fragment>
   );
 }
 
