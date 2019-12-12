@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Container } from 'react-bootstrap'
-import AppNavbar from './components/navbar'
+import AppNavbar from './pages/components/navbar'
 import AppRouter from './routes/router'
 
 const App: React.FC = () => {

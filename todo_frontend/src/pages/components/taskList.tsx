@@ -1,5 +1,5 @@
 import React from 'react'
-import { Task, TaskProgress } from '../models/task'
+import { Task, TaskProgress } from '../../models/task'
 import { Table, Button, ButtonGroup } from 'react-bootstrap'
 
 const idColCss = {

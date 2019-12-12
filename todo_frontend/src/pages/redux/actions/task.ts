@@ -1,4 +1,4 @@
-import { TaskActions, ITaskActionsRequest } from '../../models/task'
+import { TaskActions, ITaskActionsRequest } from '../../../models/task'
 
 export const addTask = (text: string): ITaskActionsRequest => {
   return {

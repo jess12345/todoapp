@@ -1,5 +1,4 @@
-import { combineReducers } from 'redux'
-import { Task, TaskActions, ITaskActionsRequest, TaskProgress } from '../../models/task'
+import { Task, TaskActions, ITaskActionsRequest, TaskProgress } from '../../../models/task'
 
 const todoTasks = (state: Task[] = [], action: ITaskActionsRequest): Task[] => {
   switch(action.type){
@@ -39,8 +38,4 @@ const todoTasks = (state: Task[] = [], action: ITaskActionsRequest): Task[] => {
   return state
 }
 
-const taskList = combineReducers({
-  todoTasks
-})
-
-export default taskList
+export default todoTasks

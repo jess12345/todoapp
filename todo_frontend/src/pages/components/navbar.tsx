@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../resources/logo.svg'
+import logo from '../../resources/logo.svg'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
 // import { LinkContainer } from 'react-router-bootstrap'
 
