@@ -1,20 +1,23 @@
 import React from 'react'
 import logo from '../resources/logo.svg'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, NavItem } from 'react-bootstrap'
+// import { LinkContainer } from 'react-router-bootstrap'
 
 const AppNavbar = () => {
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/">
         <img src={logo} className="App-logo" height="30px" alt="logo"/>
         My ToDo App
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      {/* <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Backlog</Nav.Link>
+          <LinkContainer to="/tasks">
+            <NavItem>Signup</NavItem>
+          </LinkContainer>
         </Nav>
-      </Navbar.Collapse>
+      </Navbar.Collapse> */}
     </Navbar>
   )
 }

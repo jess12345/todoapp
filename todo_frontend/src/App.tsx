@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import AppNavbar from './components/navbar'
+import AppRouter from './routes/router'
 
 const App: React.FC = () => {
   return (
@@ -27,14 +28,7 @@ const AppBody: React.FC = () => {
   return (
     <body>
       <Container>
-        <Row>
-          <Col>
-            <Button>xxx</Button>
-          </Col>
-          <Col>
-            <Button>yyy</Button>
-          </Col>
-        </Row>
+        <AppRouter />
       </Container>
     </body>
   )

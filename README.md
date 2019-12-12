@@ -7,10 +7,10 @@
 ## Set up
 - Create react app `yarn create react-app todo_frontend --typescript`
   - https://medium.com/@rossbulat/how-to-use-typescript-with-react-and-redux-a118b1e02b76
-- Add bootstrap `npm install react-bootstrap bootstrap`
+- Add bootstrap `npm install react-bootstrap bootstrap --save`
   - https://react-bootstrap.github.io/getting-started/introduction/
-
-
+- Add react router `npm install react-router-dom --save` `npm install @types/react-router-dom`
+- Add react router bootstrap `npm install react-router-bootstrap --save` `npm install @types/react-router-bootstrap`
 
 # Backend - Scala
 
