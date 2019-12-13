@@ -5,7 +5,7 @@ const componentCss = {
   margin: '10px 0px'
 }
 
-const AppAddTask = () => {
+const AppAddTask = (state: any) => {
   return (
     <div style={componentCss}>
       <Form inline >
