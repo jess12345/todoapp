@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './pages/redux/reducers'
-import { addTask, completeTask } from './pages/redux/actions/task'
+import TaskAction from './pages/redux/actions/task'
 import subscribe from './pages/redux/subscribers'
 
 const store = createStore(rootReducer)
@@ -15,10 +15,10 @@ const store = createStore(rootReducer)
 const unsubscribes = subscribe(store)
 
 // -------------------------------------------------------------------------
-store.dispatch(addTask('Learn about actions'))
-store.dispatch(addTask('Learn about reducers'))
-store.dispatch(addTask('Learn about store'))
-store.dispatch(completeTask(1))
+store.dispatch(TaskAction.addTask('Learn about actions'))
+store.dispatch(TaskAction.addTask('Learn about reducers'))
+store.dispatch(TaskAction.addTask('Learn about store'))
+store.dispatch(TaskAction.completeTask(1))
 // -------------------------------------------------------------------------
 
 ReactDOM.render(

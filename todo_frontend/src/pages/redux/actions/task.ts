@@ -1,37 +1,37 @@
-import { TaskActions, ITaskActionsRequest } from '../../../models/task'
+import { TaskActionsEnum, ITaskActionsRequest } from '../../../models/task'
 
-export const addTask = (text: string): ITaskActionsRequest => {
-  return {
-    type: TaskActions.ADD_TASK,
-    text
+const TaskAction = {
+  addTask: (text: string): ITaskActionsRequest => {
+    return {
+      type: TaskActionsEnum.ADD_TASK,
+      text
+    }
+  },
+  deleteTask: (id: number): ITaskActionsRequest => {
+    return {
+      type: TaskActionsEnum.DELETE_TASK,
+      id
+    }
+  },
+  updateTask: (id: number, text: string): ITaskActionsRequest => {
+    return {
+      type: TaskActionsEnum.UPDATE_TASK,
+      id,
+      text
+    }
+  },
+  completeTask: (id: number): ITaskActionsRequest => {
+    return {
+      type: TaskActionsEnum.COMPLETE_TASK,
+      id
+    }
+  },
+  undoTask: (id: number): ITaskActionsRequest => {
+    return {
+      type: TaskActionsEnum.UNDO_TASK,
+      id
+    }
   }
 }
 
-export const deleteTask = (id: number): ITaskActionsRequest => {
-  return {
-    type: TaskActions.DELETE_TASK,
-    id
-  }
-}
-
-export const updateTask = (id: number, text: string): ITaskActionsRequest => {
-  return {
-    type: TaskActions.UPDATE_TASK,
-    id,
-    text
-  }
-}
-
-export const completeTask = (id: number): ITaskActionsRequest => {
-  return {
-    type: TaskActions.COMPLETE_TASK,
-    id
-  }
-}
-
-export const undoTask = (id: number): ITaskActionsRequest => {
-  return {
-    type: TaskActions.UNDO_TASK,
-    id
-  }
-}
+export default TaskAction

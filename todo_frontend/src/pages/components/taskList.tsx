@@ -1,5 +1,5 @@
 import React from 'react'
-import { Task, TaskProgress } from '../../models/task'
+import { Task, TaskProgressEnum } from '../../models/task'
 import { Table, Button, ButtonGroup } from 'react-bootstrap'
 
 const idColCss = {
@@ -38,7 +38,7 @@ const TaskRow = ({ task } : {task : Task}) => {
     <tr>
       <td>{task.id}</td>
       <td>{task.task}</td>
-      <td>{TaskProgress[task.progress]}</td>
+      <td>{TaskProgressEnum[task.progress]}</td>
       <td><ActionButtons id={task.id} progress={task.progress} /></td>
     </tr>
   )
@@ -56,20 +56,20 @@ const clickUndo = (task_id: number) => {
   console.log(`clicked undo on task ${task_id}`)
 }
 
-const ActionButtons = ({ id, progress }: {id: number , progress: TaskProgress}) => {
+const ActionButtons = ({ id, progress }: {id: number , progress: TaskProgressEnum}) => {
   switch(progress) {
-    case TaskProgress.TODO:
+    case TaskProgressEnum.TODO:
       return (
         <ButtonGroup>
-          <Button onClick={() => clickDone(id)} variant="success">Done</Button>
-          <Button onClick={() => clickDelete(id)} variant="danger">Delete</Button>
+          <Button onClick={() => clickDone(id)} variant="outline-success">Done</Button>
+          <Button onClick={() => clickDelete(id)} variant="outline-danger">Delete</Button>
         </ButtonGroup>
       )
-    case TaskProgress.DONE:
+    case TaskProgressEnum.DONE:
       return (
         <ButtonGroup>
-          <Button onClick={() => clickUndo(id)} variant="warning">Undo</Button>
-          <Button onClick={() => clickDelete(id)} variant="danger">Delete</Button>
+          <Button onClick={() => clickUndo(id)} variant="outline-secondary">Undo</Button>
+          <Button onClick={() => clickDelete(id)} variant="outline-danger">Delete</Button>
         </ButtonGroup>
       )
   }
