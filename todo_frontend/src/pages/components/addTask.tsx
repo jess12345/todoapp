@@ -5,12 +5,23 @@ const componentCss = {
   margin: '20px 0px'
 }
 
+const buttonCss = {
+  margin: '0px 0px 0px 15px'
+}
+
 const AppAddTask = ({actions}: {actions: any}) => {
   return (
     <div style={componentCss}>
-      <InputGroup>
-        <FormControl id="newTask" as="textarea" aria-label="With textarea" placeholder="Task description" />
-        <Button onClick={() => clickAdd(actions)} variant="outline-success">Add</Button>
+      <InputGroup className="mb-3">
+        <InputGroup.Prepend>
+          <InputGroup.Text id="inputGroup-sizing-default">New Task</InputGroup.Text>
+        </InputGroup.Prepend>
+        <FormControl
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          placeholder="Description"
+        />
+        <Button onClick={() => clickAdd(actions)} variant="outline-success" style={buttonCss}>Add</Button>
       </InputGroup>
     </div>
   )
