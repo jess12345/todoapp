@@ -6,7 +6,7 @@ const todoTasks = (state: Task[] = [], action: ITaskActionsRequest): Task[] => {
     case TaskActionsEnum.ADD_TASK:
       console.log("adding task...",action.id)
       if( !action.text ) break;
-      const id = state.length===0 ? 1 : Math.random()
+      const id = state.length===0 ? 1 : (Math.floor(Math.random() * 1000) + 1 )
       return [...state,new Task(id, action.text)]
 
     case TaskActionsEnum.UPDATE_TASK:
