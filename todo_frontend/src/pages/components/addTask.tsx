@@ -17,6 +17,7 @@ const AppAddTask = ({actions}: {actions: any}) => {
           <InputGroup.Text id="inputGroup-sizing-default">New Task</InputGroup.Text>
         </InputGroup.Prepend>
         <FormControl
+          id="newTask"
           aria-label="Default"
           aria-describedby="inputGroup-sizing-default"
           placeholder="Description"
