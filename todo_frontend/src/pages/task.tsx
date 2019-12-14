@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Task, TaskProgressEnum } from '../models/task'
+import { Task, ITaskActions } from '../models/task'
 import AppTaskList from './components/taskList'
 import AppAddTask from './components/addTask'
 import { IAppState } from '../models/state'
@@ -11,18 +11,12 @@ const TaskPage = ({
   taskActions
 }: {
   todoTasks: Task[],
-  taskActions: {
-    clickCompleteTask: any,
-    clickAddTask: any,
-    clickDeleteTask: any,
-    clickUndoTask: any,
-    clickUpdateTask: any
-  }
+  taskActions: ITaskActions
 }) => {
   return (
     <div>
       <h1>My Todo List</h1>
-      <AppAddTask />
+      <AppAddTask actions={taskActions}/>
       <AppTaskList taskList={todoTasks} actions={taskActions} />
     </div>
   )
@@ -37,7 +31,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     clickCompleteTask: (id: number) => dispatch(TaskAction.completeTask(id)),
     clickAddTask: (text: string) => dispatch(TaskAction.addTask(text)),
     clickDeleteTask: (id: number) => dispatch(TaskAction.deleteTask(id)),
-    clickUndoTask: (id: number, text: string) => dispatch(TaskAction.undoTask(id)),
+    clickUndoTask: (id: number) => dispatch(TaskAction.undoTask(id)),
     clickUpdateTask: (id: number, text: string) => dispatch(TaskAction.updateTask(id, text))
   }
 })

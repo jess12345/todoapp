@@ -28,3 +28,11 @@ export interface ITaskActionsRequest {
   id?: number
   text?: string
 }
+
+export interface ITaskActions {
+  clickCompleteTask: any,
+  clickAddTask: any,
+  clickDeleteTask: any,
+  clickUndoTask: any,
+  clickUpdateTask: any
+}
