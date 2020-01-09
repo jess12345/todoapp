@@ -7,11 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './pages/redux/reducers'
-import subscribe from './pages/redux/subscribers'
+// import subscribe from './pages/redux/subscribers'
 
 const store = createStore(rootReducer)
 
-const unsubscribes = subscribe(store)
+// const unsubscribes = subscribe(store)
 
 ReactDOM.render(
   <Provider store={store}>

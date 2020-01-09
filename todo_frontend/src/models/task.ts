@@ -1,15 +1,3 @@
-export class Task {
-  id: number
-  task: string
-  progress: TaskProgressEnum
-
-  constructor(id: number, task: string, progress = TaskProgressEnum.TODO){
-    this.id = id
-    this.task = task
-    this.progress = progress
-  }
-}
-
 export enum TaskProgressEnum {
   TODO,
   DONE
@@ -21,6 +9,18 @@ export enum TaskActionsEnum {
   UPDATE_TASK,
   COMPLETE_TASK,
   UNDO_TASK,
+}
+
+export class Task {
+  id: number
+  task: string
+  progress: TaskProgressEnum
+
+  constructor(id: number, task: string, progress = TaskProgressEnum.TODO){
+    this.id = id
+    this.task = task
+    this.progress = progress
+  }
 }
 
 export interface ITaskActionsRequest {

@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../resources/logo.svg'
-import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap'
+// import { Navbar, Nav, NavItem } from 'react-bootstrap'
 // import { LinkContainer } from 'react-router-bootstrap'
 
 const AppNavbar = () => {
