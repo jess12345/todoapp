@@ -68,6 +68,13 @@ CREATE TABLE tasks (
   status          VARCHAR(32) NOT NULL
 );
 ```
+4. Insert into database
+```sql
+UPDATE public.tasks 
+SET description = 'this works :)' 
+WHERE "id" = 1
+```
+
 ## Connecting to the Database
 Tutorial: `https://tpolecat.github.io/doobie/docs/03-Connecting.html`
 

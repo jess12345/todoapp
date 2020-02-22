@@ -12,11 +12,11 @@ trait Task[F[_]]{
 
 object Task {
   implicit def apply[F[_]](implicit ev: Task[F]): Task[F] = ev
-
   final case class ToDoTask(
     Id: Int,
     Description: String,
-    Status: ToDoTaskStatus.Value)
+    Status: String // ToDoTaskStatus.Value
+   )
 
   object ToDoTaskStatus extends Enumeration {
     val Todo, Done = Value
@@ -33,6 +33,7 @@ object Task {
   }
 
   def impl[F[_]: Applicative]: Task[F] = new Task[F]{
-    def task: F[Task.ToDoTask] = ToDoTask(1, "task", ToDoTaskStatus.Todo).pure[F]
+//    def task: F[ToDoTask] = ToDoTask(1, "task", "todo").pure[F]
+    def task: F[ToDoTask] = database.TaskRepo.queryDatabase(1).pure[F]
   }
 }

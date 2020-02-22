@@ -12,13 +12,7 @@ object AppRoutes {
     val dsl = new Http4sDsl[F]{}
     import dsl._
     HttpRoutes.of[F] {
-      case GET -> Root / "task" => {
-        System.out.println(s"GET task")
-        for {
-          task <- H.task
-          resp <- Ok(task)
-        } yield resp
-      }
+      case GET -> Root / "task" => H.task.flatMap(Ok(_))
     }
   }
 

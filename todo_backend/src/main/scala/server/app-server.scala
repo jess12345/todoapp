@@ -1,7 +1,6 @@
 package server
 
 import cats.effect.{ConcurrentEffect, ContextShift, Timer}
-import cats.implicits._
 import fs2.Stream
 import org.http4s.client.blaze.BlazeClientBuilder
 import org.http4s.implicits._
@@ -15,15 +14,13 @@ object AppServer {
 
   def stream[F[_]: ConcurrentEffect](implicit T: Timer[F], C: ContextShift[F]): Stream[F, Nothing] = {
     for {
-      client <- BlazeClientBuilder[F](global).stream
+      _ <- BlazeClientBuilder[F](global).stream
 
       // Combine Service Routes into an HttpApp.
       // Can also be done via a Router if you
       // want to extract a segments not checked
       // in the underlying routes.
-      httpApp = (
-        AppRoutes.TaskRoutes[F]( Task.impl[F])
-      ).orNotFound
+      httpApp = AppRoutes.TaskRoutes[F]( Task.impl[F]).orNotFound
 
       // With Middlewares in place
       finalHttpApp = Logger.httpApp(true, true)(httpApp)
