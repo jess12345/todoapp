@@ -93,3 +93,17 @@ lsof -i :9999
 kill -15 <PID>
 kill -9 <PID>
 ```
+
+# Docker
+https://medium.com/jeroen-rosenberg/lightweight-docker-containers-for-scala-apps-11b99cf1a666
+https://www.scala-sbt.org/sbt-native-packager/formats/docker.html
+https://medium.com/@yzhong.cs/getting-started-with-docker-scala-sbt-d91f8ac22f5f
+https://blog.softwaremill.com/small-fast-docker-images-using-graalvms-native-image-99c0bc92e70b
+https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/
+
+
+## Building a docker image
+`sbt docker:publishLocal`
+
+## Running inside docker
+`docker run -p 9999:9999 todoapp:0.0.1`

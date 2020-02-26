@@ -1,3 +1,4 @@
+val sVersion = "2.12.8"
 val catsVersion = "2.0.0"
 val Http4sVersion = "0.20.8"
 val CirceVersion = "0.11.1"
@@ -6,11 +7,12 @@ val LogbackVersion = "1.2.3"
 val doobieVersion = "0.8.4"
 
 lazy val root = (project in file("."))
+  .enablePlugins(JavaAppPackaging, DockerPlugin)
   .settings(
-    organization := "com.example",
-    name := "http4sio_tuturial",
-    version := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.12.8",
+    organization := "jessica.hu",
+    name := "todoapp",
+    version := "0.0.1",
+    scalaVersion := sVersion,
     libraryDependencies ++= Seq(
       // Cats
       "org.typelevel"   %% "cats-core"           % catsVersion,
