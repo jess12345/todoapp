@@ -9,6 +9,7 @@ export enum TaskActionsEnum {
   UPDATE_TASK,
   COMPLETE_TASK,
   UNDO_TASK,
+  REFRESH_TASK
 }
 
 export class Task {
@@ -34,5 +35,6 @@ export interface ITaskActions {
   clickAddTask: any,
   clickDeleteTask: any,
   clickUndoTask: any,
-  clickUpdateTask: any
+  clickUpdateTask: any,
+  clickRefreshTask: any,
 }

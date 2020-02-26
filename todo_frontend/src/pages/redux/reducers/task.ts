@@ -1,4 +1,5 @@
 import { Task, TaskActionsEnum, ITaskActionsRequest, TaskProgressEnum } from '../../../models/task'
+import { getTask } from '../../../services/task';
 
 const todoTasks = (state: Task[] = [], action: ITaskActionsRequest): Task[] => {
   switch(action.type){
@@ -38,6 +39,10 @@ const todoTasks = (state: Task[] = [], action: ITaskActionsRequest): Task[] => {
       console.log("deleting task...",action.id)
       return state.filter(t => t.id !== action.id)
 
+    case TaskActionsEnum.REFRESH_TASK:
+      console.log("refreshing task...",action.id)
+      // ToDo: do something...
+      return state
   }
   return state
 }

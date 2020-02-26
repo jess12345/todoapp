@@ -31,6 +31,12 @@ const TaskAction = {
       type: TaskActionsEnum.UNDO_TASK,
       id
     }
+  },
+  refreshTask: (id: number): ITaskActionsRequest => {
+    return {
+      type: TaskActionsEnum.REFRESH_TASK,
+      id
+    }
   }
 }
 

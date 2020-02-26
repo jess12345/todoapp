@@ -5,6 +5,7 @@ import AppTaskList from './components/taskList'
 import AppAddTask from './components/addTask'
 import { IAppState } from '../models/state'
 import TaskAction from './redux/actions/task'
+import { Button } from 'react-bootstrap'
 
 const TaskPage = ({ 
   todoTasks,
@@ -18,6 +19,7 @@ const TaskPage = ({
       <h1>My Todo List</h1>
       <AppAddTask actions={taskActions}/>
       <AppTaskList taskList={todoTasks} actions={taskActions} />
+      <Button onClick={taskActions.clickRefreshTask} />
     </div>
   )
 }
@@ -32,7 +34,8 @@ const mapDispatchToProps = (dispatch: any) => ({
     clickAddTask: (text: string) => dispatch(TaskAction.addTask(text)),
     clickDeleteTask: (id: number) => dispatch(TaskAction.deleteTask(id)),
     clickUndoTask: (id: number) => dispatch(TaskAction.undoTask(id)),
-    clickUpdateTask: (id: number, text: string) => dispatch(TaskAction.updateTask(id, text))
+    clickUpdateTask: (id: number, text: string) => dispatch(TaskAction.updateTask(id, text)),
+    clickRefreshTask: (id: number) => dispatch(TaskAction.refreshTask(id))
   }
 })
 
