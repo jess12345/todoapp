@@ -159,7 +159,7 @@ https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/
   - Build a Dockerfile
     1. `docker build -t todoapp/db:0.0.1  ./todo_database/`
     2. `docker run -it --rm --name todoapp -d -p 5432:9990 -e POSTGRES_PASSWORD=pwd todoapp/db:0.0.1`
-    3. `docker exec -it todoapp psql -U postgres`
+    3. `docker exec -it todoapp psql todoapp_db -U todoapp`
 
 ## Kill all processes on port
 ```

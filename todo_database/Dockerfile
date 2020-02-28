@@ -4,6 +4,8 @@ FROM postgres
 # ENV POSTGRES_PASSWORD ''
 # ENV POSTGRES_DB 'todoapp_db'
 
-COPY 1.create_db.sql /docker-entrypoint-initdb.d/
-COPY 2.schema.sql /docker-entrypoint-initdb.d/
-COPY 3.data.sql /docker-entrypoint-initdb.d/
+COPY create_db.sh /docker-entrypoint-initdb.d/
+COPY 1.schema.sql /
+COPY 2.data.sql /
+
+RUN chmod +x /docker-entrypoint-initdb.d/create_db.sh

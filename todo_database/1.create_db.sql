@@ -1,3 +1,0 @@
-CREATE USER todoapp CREATEDB;
-CREATE DATABASE todoapp_db;
-GRANT ALL PRIVILEGES ON DATABASE todoapp_db TO todoapp;
