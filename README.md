@@ -55,9 +55,9 @@
     ```
     1. Create user
     ```
-    createuser todoapp --createdb
+    CREATE USER todoapp CREATEDB;
     ```
-    2. Create database
+    1. Create database
     ```sql
     psql postgres -U todoapp
     postgres=> CREATE DATABASE todoapp_db;
@@ -105,6 +105,9 @@ https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/
   - `docker stop $(docker ps -a -q)`
   - `docker rm $(docker ps -a -q)`
 
+- remove all docker images
+  - `docker rmi $(docker images -a -q)`
+
 - Scala Code
   - Building a docker image `sbt docker:publishLocal`
   - Running inside docker `docker run -p 9999:9999 todoapp:0.0.1`
@@ -112,13 +115,51 @@ https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/
 - Database
   - Put in docker
     - https://hub.docker.com/_/postgres
-      1. `docker pull postgres`
-      2. `docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
-      3. 
+      1. `docker run -it --rm --name todoapp -e POSTGRES_PASSWORD=pwd -d -p 5432:9990 postgres`
+      2. `docker exec -it todoapp psql -U postgres` login as root user
+      3. `CREATE USER todoapp CREATEDB;` semicolon is really important
+      4. `docker exec -it todoapp psql postgres -U todoapp` change user
+      5. create db
+          ```sql
+          postgres=> CREATE DATABASE todoapp_db;
+          postgres=> GRANT ALL PRIVILEGES ON DATABASE todoapp_db TO todoapp; 
+          postgres=> \list 
+          postgres=> \connect todoapp_db
+          ```
+      6. create table
+          ```sql
+          CREATE TABLE tasks (
+            id              SERIAL PRIMARY KEY,
+            description     VARCHAR(1024) NOT NULL,
+            status          VARCHAR(32) NOT NULL
+          );
+          ```
+      7. insert data
+          ```sql
+          INSERT INTO tasks VALUES (1, 'first task', 'todo');
+          INSERT INTO tasks VALUES (2, 'second task', 'done');
+          INSERT INTO tasks VALUES (3, 'third task', 'todo');
+          INSERT INTO tasks VALUES (4, 'forth task', 'done');
+          INSERT INTO tasks VALUES (5, 'fifth task', 'todo');
+          ```
+    - create image from a container
+        `docker commit f8e3e06b3ec1 todoapp/db:0.0.1`
+    - run docker from newly created image
+        `docker run -it --rm --name new_todoapp -e POSTGRES_PASSWORD=pwd -d todoapp/db:0.0.1 `
+    - connect to database
+        `docker exec -it todoapp  psql -U postgres`
+    - exit a container
+        `docker stop xxx`
 
+  - Docker `run` flags
+    - `-it` - running interactive processes such as shell
+    - `-e` - set environment variables
+    - `--rm` - container is removed when it exits
 
-
-
+  - Build a Dockerfile
+    1. `docker build -t todoapp/db:0.0.1  ./todo_database/`
+    2. `docker run -it --rm --name todoapp -d -p 5432:9990 -e POSTGRES_PASSWORD=pwd todoapp/db:0.0.1`
+    3. `docker exec -it todoapp psql -U postgres`
 
 ## Kill all processes on port
 ```
@@ -127,3 +168,10 @@ lsof -i :9999
 kill -15 <PID>
 kill -9 <PID>
 ```
+
+
+# Postgres
+- `\du` - list users
+- `\l` - list databases
+- `\c todoapp_db` - connect to todoapp_db
+- `\d` - list tables and relations
