@@ -175,3 +175,19 @@ kill -9 <PID>
 - `\l` - list databases
 - `\c todoapp_db` - connect to todoapp_db
 - `\d` - list tables and relations
+
+
+
+# To Do
+- [x] Create Http4s Scala project (API)
+- [x] Create Database in Postgres (DB)
+- [x] Create React app (UI)
+- [x] Connect API to DB
+- [ ] Connect UI to API
+- [x] Put API in Docker
+- [x] Put DB in Docker
+- [ ] Put UI in Docker
+- [ ] Connect Docker API to Docker DB
+- [ ] Connect Docker UI to Docker API
+- [ ] Spin up UI, API, DB in docker-compose locally
+- [ ] Put UI, API, DB in AWS
