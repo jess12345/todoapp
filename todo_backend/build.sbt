@@ -10,7 +10,7 @@ lazy val root = (project in file("."))
   .enablePlugins(JavaAppPackaging, DockerPlugin)
   .settings(
     organization := "jessica.hu",
-    name := "todoapp",
+    name := "todoapp-api",
     version := "0.0.1",
     scalaVersion := sVersion,
     libraryDependencies ++= Seq(
