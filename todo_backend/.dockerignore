@@ -1,0 +1,12 @@
+.git
+.gitignore
+build.sbt
+Dockerfile
+*.iml
+*.md
+/.idea/*
+/.bloop/*
+/.metals/*
+/project/*
+/src/*
+/tmp/*

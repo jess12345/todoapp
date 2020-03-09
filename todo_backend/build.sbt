@@ -7,7 +7,6 @@ val LogbackVersion = "1.2.3"
 val doobieVersion = "0.8.4"
 
 lazy val root = (project in file("."))
-  .enablePlugins(JavaAppPackaging, DockerPlugin)
   .settings(
     organization := "jessica.hu",
     name := "todoapp-api",
@@ -30,6 +29,8 @@ lazy val root = (project in file("."))
       "org.specs2"      %% "specs2-core"         % Specs2Version % "test",
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion
     ),
+    assemblyJarName in assembly := "todoapp-api-assembly.jar",
+    test in assembly := {},
     addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.10.3"),
     addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.0")
   )

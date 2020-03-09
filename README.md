@@ -33,8 +33,14 @@
   1. `sbt run`
   2. `curl -i http://localhost:9999/task`
 
-
-
+- Commands:
+  - `sbt compile`
+  - `sbt run`
+  - `sbt package` - create JAR file that can be run using sbt
+    - `jar tvf target/scala-2.12/todoapp-api_2.12-0.0.1.jar` - check what's in the jar file
+    - `sbt run target/scala-2.12/todoapp-api_2.12-0.0.1` - run the jar file using sbt
+  - `sbt assembly` - use sbt-assembly to assembly full jar file that can be run by java
+    - `java -jar target/scala-2.12/todoapp-api-assembly.jar`
 
 
 # Database - Postgres
@@ -114,9 +120,10 @@ https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/
 
 - Scala Code
   1. Change directory `j todo_backend`
-  2. Build docker image `sbt docker:publishLocal`
-  3. Run container from image `docker run --rm -p 9999:9999 todoapp-api:0.0.1`
-  4. Connect to api `curl -i http://localhost:9999/task`
+  2. Build JAR file `sbt assembly`
+  3. Build docker image `docker build -t todoapp-api:0.0.1 .`
+  4. Run container from image `docker run --rm -p 9999:9999 todoapp-api:0.0.1`
+  5. Connect to api `curl -i http://localhost:9999/task`
 
 - Database
   1. Change directory `j todo_database`
@@ -124,12 +131,30 @@ https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/
   3. Run container from image `docker run -it --rm --name todoapp-db -d -p 5432:9990 -e POSTGRES_PASSWORD=pwd todoapp-db:0.0.1`
   4. Connect to database in container `docker exec -it todoapp-db psql todoapp_db -U todoapp`
 
+  - Check can connect to db in docker:
+    - check database is running `docker exec -it todoapp-db bash`
+    - login to postgres `psql todoapp_db -U todoapp`
+    - run query `select * from tasks;`
+    - open postgresql.conf
+      - check location `psql -U postgres -c 'SHOW config_file'`
+      - open `/var/lib/postgresql/data/postgresql.conf`
+  - Check can connect to db from host machine
+    - `psql -h localhost -p 9990 -U todoapp -d todoapp_db -W`
+
 - React App
   1. Change directory `j todo_frontend`
   2. Build production build `yarn build`
   3. Build docker image from production build `docker build -t todoapp-ui:0.0.1 .`
   4. Run container from image `docker run --rm -p 8000:80 todoapp-ui:0.0.1`
   5. Connect to web app in browser `http://localhost:8000/tasks`
+
+
+## Docker Compose
+```
+docker-compose up api
+docker-compose up ui
+docker-compose up db
+```
 
 ## Kill all processes on port
 ```
@@ -157,7 +182,23 @@ kill -9 <PID>
 - [x] Put API in Docker
 - [x] Put DB in Docker
 - [x] Put UI in Docker
+- [x] Put API in docker-compose
+- [x] Put DB in docker-compose
+- [x] Put UI in docker-compose
 - [ ] Connect Docker API to Docker DB
 - [ ] Connect Docker UI to Docker API
 - [ ] Spin up UI, API, DB in docker-compose locally
 - [ ] Put UI, API, DB in AWS
+
+
+
+
+
+CDN
+- host file
+
+
+aws lab account
+
+
+react hook
