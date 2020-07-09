@@ -150,11 +150,11 @@ https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/
 
 
 ## Docker Compose
-```
-docker-compose up api
-docker-compose up ui
-docker-compose up db
-```
+start everything on the same network: `docker-compose up -d`
+
+Debugging:
+  - connect to Postgres: `psql -h localhost -p 5432 -U todoapp -d todoapp_db -W`
+  - connect to Docker container: `docker exec -it container_name bash`
 
 ## Kill all processes on port
 ```

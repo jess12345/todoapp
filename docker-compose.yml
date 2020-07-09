@@ -8,10 +8,11 @@ services:
   db:
     build: ./todo_database
     ports:
-      - "5432:9990"
+      - "5432"
     environment:
+      - POSTGRES_DB=todoapp_db
       - POSTGRES_PASSWORD=pwd
   api:
     build: ./todo_backend
     ports: 
-      - 9999:9999
+      - "9999:9999"
